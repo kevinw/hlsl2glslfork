@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0058C01D3C460E007EC77B /* simple_api.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0A0058BF1D3C460E007EC77B /* simple_api.cpp */; };
+		0A0058CB1D3C4928007EC77B /* simple_api.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0A0058BF1D3C460E007EC77B /* simple_api.cpp */; };
+		0A0058CC1D3C4935007EC77B /* glslCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10DFD0AF103660045E29C /* glslCommon.cpp */; };
+		0A0058CD1D3C4935007EC77B /* glslFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10DFE0AF103660045E29C /* glslFunction.cpp */; };
+		0A0058CE1D3C4935007EC77B /* glslOutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10DFF0AF103660045E29C /* glslOutput.cpp */; };
+		0A0058CF1D3C4935007EC77B /* glslStruct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E000AF103660045E29C /* glslStruct.cpp */; };
+		0A0058D01D3C4935007EC77B /* glslSymbol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E010AF103660045E29C /* glslSymbol.cpp */; };
+		0A0058D11D3C4935007EC77B /* hlslCrossCompiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E020AF103660045E29C /* hlslCrossCompiler.cpp */; };
+		0A0058D21D3C4935007EC77B /* hlslLinker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E030AF103660045E29C /* hlslLinker.cpp */; };
+		0A0058D31D3C4935007EC77B /* hlslSupportLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E040AF103660045E29C /* hlslSupportLib.cpp */; };
+		0A0058D41D3C4935007EC77B /* propagateMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E060AF103660045E29C /* propagateMutable.cpp */; };
+		0A0058D51D3C4935007EC77B /* typeSamplers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E070AF103660045E29C /* typeSamplers.cpp */; };
+		0A0058D61D3C4943007EC77B /* HLSL2GLSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E260AF106F40045E29C /* HLSL2GLSL.cpp */; };
+		0A0058D71D3C4943007EC77B /* InfoSink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E270AF106F40045E29C /* InfoSink.cpp */; };
+		0A0058D81D3C4943007EC77B /* Initialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E280AF106F40045E29C /* Initialize.cpp */; };
+		0A0058D91D3C4943007EC77B /* Intermediate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E290AF106F40045E29C /* Intermediate.cpp */; };
+		0A0058DA1D3C4943007EC77B /* intermOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E2A0AF106F40045E29C /* intermOut.cpp */; };
+		0A0058DB1D3C4943007EC77B /* IntermTraverse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E2B0AF106F40045E29C /* IntermTraverse.cpp */; };
+		0A0058DC1D3C4943007EC77B /* ParseHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E2D0AF106F40045E29C /* ParseHelper.cpp */; };
+		0A0058DD1D3C4943007EC77B /* PoolAlloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E2E0AF106F40045E29C /* PoolAlloc.cpp */; };
+		0A0058DE1D3C4943007EC77B /* RemoveTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E300AF106F40045E29C /* RemoveTree.cpp */; };
+		0A0058DF1D3C4943007EC77B /* SymbolTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E310AF106F40045E29C /* SymbolTable.cpp */; };
+		0A0058E01D3C4946007EC77B /* ConstantFolding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B6C96AE1639C18100CB13EE /* ConstantFolding.cpp */; };
+		0A0058E11D3C495B007EC77B /* sourceloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B5867F71956E82F0092978D /* sourceloc.cpp */; };
+		0A0058E21D3C495B007EC77B /* mojoshader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D3C7219571AE600912D42 /* mojoshader.cpp */; };
+		0A0058E31D3C495B007EC77B /* mojoshader_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D3C6F19571AE600912D42 /* mojoshader_common.cpp */; };
+		0A0058E41D3C495B007EC77B /* mojoshader_lexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D3C7019571AE600912D42 /* mojoshader_lexer.cpp */; };
+		0A0058E51D3C495B007EC77B /* mojoshader_preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D3C7119571AE600912D42 /* mojoshader_preprocessor.cpp */; };
+		0A0058E61D3C495B007EC77B /* Gen_hlslang.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E5B0AF107780045E29C /* Gen_hlslang.cpp */; };
+		0A0058E71D3C495B007EC77B /* hlslang_tab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E5C0AF107780045E29C /* hlslang_tab.cpp */; };
+		0A0058E81D3C4962007EC77B /* ossource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC10E480AF107290045E29C /* ossource.cpp */; };
 		2B1D3C7319571AE600912D42 /* mojoshader_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D3C6F19571AE600912D42 /* mojoshader_common.cpp */; };
 		2B1D3C7419571AE600912D42 /* mojoshader_lexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D3C7019571AE600912D42 /* mojoshader_lexer.cpp */; };
 		2B1D3C7519571AE600912D42 /* mojoshader_preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D3C7119571AE600912D42 /* mojoshader_preprocessor.cpp */; };
@@ -40,6 +71,9 @@
 
 /* Begin PBXFileReference section */
 		08FB77AAFE841565C02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		0A0058BF1D3C460E007EC77B /* simple_api.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simple_api.cpp; path = hlslang/simple_api.cpp; sourceTree = "<group>"; };
+		0A0058C51D3C48F8007EC77B /* hlsl2glsl.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hlsl2glsl.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A0058C71D3C48F8007EC77B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B1D3C6F19571AE600912D42 /* mojoshader_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mojoshader_common.cpp; path = hlslang/MachineIndependent/preprocessor/mojoshader_common.cpp; sourceTree = "<group>"; };
 		2B1D3C7019571AE600912D42 /* mojoshader_lexer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mojoshader_lexer.cpp; path = hlslang/MachineIndependent/preprocessor/mojoshader_lexer.cpp; sourceTree = "<group>"; };
 		2B1D3C7119571AE600912D42 /* mojoshader_preprocessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mojoshader_preprocessor.cpp; path = hlslang/MachineIndependent/preprocessor/mojoshader_preprocessor.cpp; sourceTree = "<group>"; };
@@ -104,11 +138,22 @@
 		3AC10E5D0AF107780045E29C /* hlslang_tab.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = hlslang_tab.h; path = hlslang/MachineIndependent/hlslang_tab.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		0A0058C21D3C48F8007EC77B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		034768DDFF38A45A11DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				2B951C991135194700DBAF46 /* libhlsl2glsl.a */,
+				0A0058C51D3C48F8007EC77B /* hlsl2glsl.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +163,7 @@
 			children = (
 				08FB77ACFE841707C02AAC07 /* hlslang */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				0A0058C61D3C48F8007EC77B /* hlsl2glsl */,
 				034768DDFF38A45A11DB9C8B /* Products */,
 			);
 			name = glslang;
@@ -134,6 +180,7 @@
 		08FB77ACFE841707C02AAC07 /* hlslang */ = {
 			isa = PBXGroup;
 			children = (
+				0A0058BF1D3C460E007EC77B /* simple_api.cpp */,
 				3AC10DB60AF1028F0045E29C /* Include */,
 				3AC10DC50AF102D00045E29C /* PublicInclude */,
 				3AC10DB00AF1027A0045E29C /* GenericCodeGen */,
@@ -141,6 +188,14 @@
 				3AC10DC20AF102BB0045E29C /* OSDependent */,
 			);
 			name = hlslang;
+			sourceTree = "<group>";
+		};
+		0A0058C61D3C48F8007EC77B /* hlsl2glsl */ = {
+			isa = PBXGroup;
+			children = (
+				0A0058C71D3C48F8007EC77B /* Info.plist */,
+			);
+			path = hlsl2glsl;
 			sourceTree = "<group>";
 		};
 		3AC10DB00AF1027A0045E29C /* GenericCodeGen */ = {
@@ -282,9 +337,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2B951C981135194700DBAF46 /* hlsl2glsl */ = {
+		0A0058C41D3C48F8007EC77B /* hlsl2glsl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B951C9C1135196500DBAF46 /* Build configuration list for PBXNativeTarget "hlsl2glsl" */;
+			buildConfigurationList = 0A0058C81D3C48F8007EC77B /* Build configuration list for PBXNativeTarget "hlsl2glsl" */;
+			buildPhases = (
+				0A0058C11D3C48F8007EC77B /* Sources */,
+				0A0058C21D3C48F8007EC77B /* Frameworks */,
+				0A0058C31D3C48F8007EC77B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hlsl2glsl;
+			productName = hlsl2glsl;
+			productReference = 0A0058C51D3C48F8007EC77B /* hlsl2glsl.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		2B951C981135194700DBAF46 /* hlsl2glsl-static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B951C9C1135196500DBAF46 /* Build configuration list for PBXNativeTarget "hlsl2glsl-static" */;
 			buildPhases = (
 				2B951CEB1135284C00DBAF46 /* Generate LexerParser */,
 				2B951C961135194700DBAF46 /* Sources */,
@@ -293,7 +365,7 @@
 			);
 			dependencies = (
 			);
-			name = hlsl2glsl;
+			name = "hlsl2glsl-static";
 			productName = hlsl2glsl;
 			productReference = 2B951C991135194700DBAF46 /* libhlsl2glsl.a */;
 			productType = "com.apple.product-type.library.static";
@@ -304,7 +376,12 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0730;
+				TargetAttributes = {
+					0A0058C41D3C48F8007EC77B = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
 			};
 			buildConfigurationList = 1DEB916408733D950010E9CD /* Build configuration list for PBXProject "hlslang" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -321,10 +398,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2B951C981135194700DBAF46 /* hlsl2glsl */,
+				2B951C981135194700DBAF46 /* hlsl2glsl-static */,
+				0A0058C41D3C48F8007EC77B /* hlsl2glsl */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0A0058C31D3C48F8007EC77B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		2B951CEB1135284C00DBAF46 /* Generate LexerParser */ = {
@@ -349,6 +437,43 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0A0058C11D3C48F8007EC77B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A0058E51D3C495B007EC77B /* mojoshader_preprocessor.cpp in Sources */,
+				0A0058D41D3C4935007EC77B /* propagateMutable.cpp in Sources */,
+				0A0058E71D3C495B007EC77B /* hlslang_tab.cpp in Sources */,
+				0A0058E61D3C495B007EC77B /* Gen_hlslang.cpp in Sources */,
+				0A0058E11D3C495B007EC77B /* sourceloc.cpp in Sources */,
+				0A0058D51D3C4935007EC77B /* typeSamplers.cpp in Sources */,
+				0A0058CC1D3C4935007EC77B /* glslCommon.cpp in Sources */,
+				0A0058D81D3C4943007EC77B /* Initialize.cpp in Sources */,
+				0A0058CD1D3C4935007EC77B /* glslFunction.cpp in Sources */,
+				0A0058E31D3C495B007EC77B /* mojoshader_common.cpp in Sources */,
+				0A0058E81D3C4962007EC77B /* ossource.cpp in Sources */,
+				0A0058DE1D3C4943007EC77B /* RemoveTree.cpp in Sources */,
+				0A0058DA1D3C4943007EC77B /* intermOut.cpp in Sources */,
+				0A0058E01D3C4946007EC77B /* ConstantFolding.cpp in Sources */,
+				0A0058CE1D3C4935007EC77B /* glslOutput.cpp in Sources */,
+				0A0058D91D3C4943007EC77B /* Intermediate.cpp in Sources */,
+				0A0058E41D3C495B007EC77B /* mojoshader_lexer.cpp in Sources */,
+				0A0058DD1D3C4943007EC77B /* PoolAlloc.cpp in Sources */,
+				0A0058D01D3C4935007EC77B /* glslSymbol.cpp in Sources */,
+				0A0058DF1D3C4943007EC77B /* SymbolTable.cpp in Sources */,
+				0A0058DC1D3C4943007EC77B /* ParseHelper.cpp in Sources */,
+				0A0058D11D3C4935007EC77B /* hlslCrossCompiler.cpp in Sources */,
+				0A0058CB1D3C4928007EC77B /* simple_api.cpp in Sources */,
+				0A0058CF1D3C4935007EC77B /* glslStruct.cpp in Sources */,
+				0A0058D71D3C4943007EC77B /* InfoSink.cpp in Sources */,
+				0A0058E21D3C495B007EC77B /* mojoshader.cpp in Sources */,
+				0A0058D61D3C4943007EC77B /* HLSL2GLSL.cpp in Sources */,
+				0A0058D21D3C4935007EC77B /* hlslLinker.cpp in Sources */,
+				0A0058D31D3C4935007EC77B /* hlslSupportLib.cpp in Sources */,
+				0A0058DB1D3C4943007EC77B /* IntermTraverse.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2B951C961135194700DBAF46 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -381,6 +506,7 @@
 				2B951CBD1135197300DBAF46 /* SymbolTable.cpp in Sources */,
 				2B951CBF1135197300DBAF46 /* typeSamplers.cpp in Sources */,
 				2B6C96AF1639C18100CB13EE /* ConstantFolding.cpp in Sources */,
+				0A0058C01D3C460E007EC77B /* simple_api.cpp in Sources */,
 				2B1D3C7619571AE600912D42 /* mojoshader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,9 +514,98 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0A0058C91D3C48F8007EC77B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = hlsl2glsl/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = kevinwatters.hlsl2glsl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		0A0058CA1D3C48F8007EC77B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = hlsl2glsl/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = kevinwatters.hlsl2glsl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		1DEB916508733D950010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -431,7 +646,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_EXTENSION = a;
 				INSTALL_PATH = /usr/local/lib;
+				MACH_O_TYPE = mh_bundle;
 				PRODUCT_NAME = hlsl2glsl;
 			};
 			name = Debug;
@@ -442,7 +659,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
+				EXECUTABLE_EXTENSION = a;
 				INSTALL_PATH = /usr/local/lib;
+				MACH_O_TYPE = mh_bundle;
 				PRODUCT_NAME = hlsl2glsl;
 			};
 			name = Release;
@@ -450,6 +669,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0A0058C81D3C48F8007EC77B /* Build configuration list for PBXNativeTarget "hlsl2glsl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A0058C91D3C48F8007EC77B /* Debug */,
+				0A0058CA1D3C48F8007EC77B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		1DEB916408733D950010E9CD /* Build configuration list for PBXProject "hlslang" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -459,7 +686,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2B951C9C1135196500DBAF46 /* Build configuration list for PBXNativeTarget "hlsl2glsl" */ = {
+		2B951C9C1135196500DBAF46 /* Build configuration list for PBXNativeTarget "hlsl2glsl-static" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B951C9A1135194700DBAF46 /* Debug */,
