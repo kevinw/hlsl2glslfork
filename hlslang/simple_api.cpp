@@ -196,12 +196,13 @@ static bool C_DECL IncludeOpenCallback(bool isSystem, const char* fname, const c
 
 
 static bool didInitialize = false;
-
+#include <fstream>
 extern "C" {
     
 
 
-bool TranslateShader (const char* sourceStr,
+bool TranslateShader (EShLanguage shaderType,
+                      const char* sourceStr,
                              const char* includePath,
                       const char* entryPoint,
                       ETargetVersion version,
@@ -216,7 +217,7 @@ bool TranslateShader (const char* sourceStr,
     
     assert(version != ETargetVersionCount);
     
-    ShHandle parser = Hlsl2Glsl_ConstructCompiler (EShLangFragment);
+    ShHandle parser = Hlsl2Glsl_ConstructCompiler (shaderType);
     
     bool res = true;
     
@@ -245,14 +246,20 @@ bool TranslateShader (const char* sourceStr,
         if (translateOk) {
             std::string text = GetCompiledShaderText(parser);
             
-            strncpy(output, text.c_str(), outputMaxCount);
+            if (outputMaxCount < text.size()) {
+                res = false;
+                strncpy(output, "not enough space in output buffer for shader", outputMaxCount);
+            } else {
             
-            for (size_t i = 0, n = text.size(); i != n; ++i) {
-                char c = text[i];
+                strncpy(output, text.c_str(), outputMaxCount);
                 
-                if (!isascii(c)) {
-                    printf ("  contains non-ascii '%c' (0x%02X)\n", c, c);
-                    res = false;
+                for (size_t i = 0, n = text.size(); i != n; ++i) {
+                    char c = text[i];
+                    
+                    if (!isascii(c)) {
+                        printf ("  contains non-ascii '%c' (0x%02X)\n", c, c);
+                        res = false;
+                    }
                 }
             }
         }
@@ -270,6 +277,13 @@ bool TranslateShader (const char* sourceStr,
         strncpy(output, infoLog, outputMaxCount);
 
         res = false;
+    }
+    
+    if (res) {
+        std::fstream debugOut;
+        debugOut.open("/Users/kevin/Desktop/shader_error_in.hlsl");
+        debugOut << sourceStr;
+        debugOut.close();
     }
     
     Hlsl2Glsl_DestructCompiler (parser);
