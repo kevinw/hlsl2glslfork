@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <string>
 #include <vector>
+#include <fstream>
 #include <time.h>
 #include <assert.h>
 
@@ -78,8 +79,6 @@ static void logf(const char* format, ...)
 #include "hlsl2glsl.h"
 
 static void replace_string (std::string& target, const std::string& search, const std::string& replace, size_t startPos);
-
-
 
 typedef std::vector<std::string> StringVector;
 
@@ -179,31 +178,40 @@ static std::string GetCompiledShaderText(ShHandle parser)
 }
 
 
-struct IncludeContext
-{
+struct IncludeContext {
 	std::string currentFolder;
+  EShLanguage shaderType;
 };
 
+typedef const char* (__stdcall * IncludeCallback)(const char* filename, EShLanguage shaderType);
 
-static bool C_DECL IncludeOpenCallback(bool isSystem, const char* fname, const char* parentfname, const char* parent, std::string& output, void* d)
-{
-	const IncludeContext* data = reinterpret_cast<IncludeContext*>(d);
+IncludeCallback customIncludeCallback;
+
+static bool C_DECL IncludeOpenCallback(bool isSystem, const char* fname, const char* parentfname, const char* parent, std::string& output, void* d) {
+    const IncludeContext* data = reinterpret_cast<IncludeContext*>(d);
 	
-	std::string pathName = data->currentFolder + "/" + fname;
-	
-	return ReadStringFromFile(pathName.c_str(), output);
+    std::string pathName = data->currentFolder + "/" + fname;
+
+    if (customIncludeCallback) {
+        const char* bytes = customIncludeCallback(pathName.c_str(), data->shaderType);
+        if (bytes)
+            output = bytes;
+        return bytes != nullptr;
+    } else {
+        return ReadStringFromFile(pathName.c_str(), output);
+    }
 }
 
-
 static bool didInitialize = false;
-#include <fstream>
 extern "C" {
-    
 
+void SetIncludeCallback(IncludeCallback includeCallback) {
+  customIncludeCallback = includeCallback;
+}
 
 bool TranslateShader (EShLanguage shaderType,
                       const char* sourceStr,
-                             const char* includePath,
+                      const char* includePath,
                       const char* entryPoint,
                       ETargetVersion version,
                       unsigned options,
@@ -219,10 +227,10 @@ bool TranslateShader (EShLanguage shaderType,
     
     ShHandle parser = Hlsl2Glsl_ConstructCompiler (shaderType);
     
-    bool res = true;
-    
     IncludeContext includeCtx;
     includeCtx.currentFolder = std::string(includePath);
+    includeCtx.shaderType = shaderType;
+
     Hlsl2Glsl_ParseCallbacks includeCB;
     includeCB.includeOpenCallback = IncludeOpenCallback;
     includeCB.includeCloseCallback = NULL;
@@ -230,9 +238,9 @@ bool TranslateShader (EShLanguage shaderType,
     
     int parseOk = Hlsl2Glsl_Parse (parser, sourceStr, version, &includeCB, options);
     const char* infoLog = Hlsl2Glsl_GetInfoLog( parser );
-
-    if (parseOk)
-    {
+    bool res = true;
+    
+    if (parseOk) {
         static EAttribSemantic kAttribSemantic[] = {
             EAttrSemTangent,
         };
@@ -262,17 +270,13 @@ bool TranslateShader (EShLanguage shaderType,
                     }
                 }
             }
-        }
-        else
-        {
+        } else {
             printf ("  translate error: %s\n", infoLog);
             strncpy(output, infoLog, outputMaxCount);
 
             res = false;
         }
-    }
-    else
-    {
+    } else {
         printf ("  parse error: %s\n", infoLog);
         strncpy(output, infoLog, outputMaxCount);
 
