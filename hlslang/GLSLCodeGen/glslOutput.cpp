@@ -410,7 +410,7 @@ void TGlslOutputTraverser::traverseArrayDeclarationWithInit(TIntermDeclaration* 
 			current->setActiveOutput(out);
 		}
 		
-		unsigned n_vals = init.size();
+		size_t n_vals = init.size();
 		for (unsigned i = 0; i != n_vals; ++i) {
 			current->beginStatement();
 			sym->traverse(this);
