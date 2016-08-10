@@ -350,7 +350,7 @@ static int cpp_get_token (hlmojo_Preprocessor* pp, char* buf, int maxSize)
 	}
 	else
 	{
-		if (len >= maxSize)
+		if (len >= (unsigned int)maxSize)
 		{
 			return maxSize;
 		}
