@@ -31,3 +31,5 @@ tests/out-*.txt
 tests/hlsl2glsltest/hlsl2glsltest
 tests/hlsl2glsltest/out.txt
 *-res.txt
+*.db
+hlslang.VC.VC.opendb

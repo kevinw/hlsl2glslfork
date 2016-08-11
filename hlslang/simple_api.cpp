@@ -76,8 +76,7 @@ static void logf(const char* format, ...)
 #include <GL/glut.h>
 
 #endif
-#include "hlsl2glsl.h"
-
+#include "../../include/hlsl2glsl.h"
 static void replace_string (std::string& target, const std::string& search, const std::string& replace, size_t startPos);
 
 typedef std::vector<std::string> StringVector;
@@ -209,6 +208,42 @@ void SetIncludeCallback(IncludeCallback includeCallback) {
   customIncludeCallback = includeCallback;
 }
 
+__declspec(dllexport)
+bool Parse(EShLanguage shaderType,
+	const char* sourceStr,
+	const char* includePath,
+	ETargetVersion version,
+	char* output,
+	int outputMaxCount)
+{
+	if (!didInitialize) {
+		didInitialize = true;
+		Hlsl2Glsl_Initialize();
+	}
+
+	assert(version != ETargetVersionCount);
+
+	ShHandle parser = Hlsl2Glsl_ConstructCompiler(shaderType);
+
+	IncludeContext includeCtx;
+	includeCtx.currentFolder = std::string(includePath);
+	includeCtx.shaderType = shaderType;
+
+	Hlsl2Glsl_ParseCallbacks includeCB;
+	includeCB.includeOpenCallback = IncludeOpenCallback;
+	includeCB.includeCloseCallback = NULL;
+	includeCB.data = &includeCtx;
+
+	unsigned int options = 0;
+	bool parseOk = 1 == Hlsl2Glsl_Parse(parser, sourceStr, version, &includeCB, options);	
+	const char* infoLog = Hlsl2Glsl_GetInfoLog(parser);
+	if (infoLog)
+		strncpy(output, infoLog, outputMaxCount);
+	Hlsl2Glsl_DestructCompiler(parser);
+	return parseOk;
+}
+
+__declspec(dllexport)
 bool TranslateShader (EShLanguage shaderType,
                       const char* sourceStr,
                       const char* includePath,
@@ -254,7 +289,7 @@ bool TranslateShader (EShLanguage shaderType,
         if (translateOk) {
             std::string text = GetCompiledShaderText(parser);
             
-            if (outputMaxCount < text.size()) {
+            if ((size_t)outputMaxCount < text.size()) {
                 res = false;
                 strncpy(output, "not enough space in output buffer for shader", outputMaxCount);
             } else {

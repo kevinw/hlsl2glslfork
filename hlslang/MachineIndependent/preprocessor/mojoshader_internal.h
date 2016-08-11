@@ -31,7 +31,9 @@ extern "C" {
 
 #ifdef _MSC_VER
 #include <malloc.h>
+#ifndef va_copy
 #define va_copy(a, b) a = b
+#endif
 #define snprintf _snprintf  // !!! FIXME: not a safe replacement!
 #define vsnprintf _vsnprintf  // !!! FIXME: not a safe replacement!
 #define strcasecmp stricmp
