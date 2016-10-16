@@ -76,7 +76,14 @@ static void logf(const char* format, ...)
 #include <GL/glut.h>
 
 #endif
+
+#if defined(__APPLE__)
+#include "hlsl2glsl.h"
+#define DLLEXPORT
+#else
 #include "../../include/hlsl2glsl.h"
+#define DLLEXPORT __declspec(dllexport)
+#endif
 static void replace_string (std::string& target, const std::string& search, const std::string& replace, size_t startPos);
 
 typedef std::vector<std::string> StringVector;
@@ -208,8 +215,7 @@ void SetIncludeCallback(IncludeCallback includeCallback) {
   customIncludeCallback = includeCallback;
 }
 
-__declspec(dllexport)
-bool Parse(EShLanguage shaderType,
+DLLEXPORT bool Parse(EShLanguage shaderType,
 	const char* sourceStr,
 	const char* includePath,
 	ETargetVersion version,
@@ -243,8 +249,7 @@ bool Parse(EShLanguage shaderType,
 	return parseOk;
 }
 
-__declspec(dllexport)
-bool TranslateShader (EShLanguage shaderType,
+DLLEXPORT bool TranslateShader (EShLanguage shaderType,
                       const char* sourceStr,
                       const char* includePath,
                       const char* entryPoint,
