@@ -121,6 +121,9 @@
     <ClCompile Include="hlslang\MachineIndependent\preprocessor\mojoshader_preprocessor.cpp">
       <Filter>Machine Independent\CPP</Filter>
     </ClCompile>
+    <ClCompile Include="hlslang\simple_api.cpp">
+      <Filter>Machine Independent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hlslang\MachineIndependent\Initialize.h">

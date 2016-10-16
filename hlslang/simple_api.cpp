@@ -204,6 +204,7 @@ static bool C_DECL IncludeOpenCallback(bool isSystem, const char* fname, const c
 static bool didInitialize = false;
 extern "C" {
 
+__declspec(dllexport)
 void SetIncludeCallback(IncludeCallback includeCallback) {
   customIncludeCallback = includeCallback;
 }
