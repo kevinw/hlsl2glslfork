@@ -746,7 +746,10 @@ void initializeHLSLSupportLibrary(ETargetVersion targetVersion)
 	hlslSupportLib->insert( CodeMap::value_type( EOpMatrixIndex,
 		"vec2 xll_matrixindex_mf2x2_i (mat2 m, int i) { vec2 v; v.x=m[0][i]; v.y=m[1][i]; return v; }\n"
 		"vec3 xll_matrixindex_mf3x3_i (mat3 m, int i) { vec3 v; v.x=m[0][i]; v.y=m[1][i]; v.z=m[2][i]; return v; }\n"
-		"vec4 xll_matrixindex_mf4x4_i (mat4 m, int i) { vec4 v; v.x=m[0][i]; v.y=m[1][i]; v.z=m[2][i]; v.w=m[3][i]; return v; }\n")
+		"vec4 xll_matrixindex_mf4x4_i (mat4 m, int i) { vec4 v; v.x=m[0][i]; v.y=m[1][i]; v.z=m[2][i]; v.w=m[3][i]; return v; }\n"
+		"vec4 xll_matrixindex_mf4x4_i_0 (mat4 m) { vec4 v; v.x=m[0][0]; v.y=m[1][0]; v.z=m[2][0]; v.w=m[3][0]; return v; }\n"
+		"vec4 xll_matrixindex_mf4x4_i_1 (mat4 m) { vec4 v; v.x=m[0][1]; v.y=m[1][1]; v.z=m[2][1]; v.w=m[3][1]; return v; }\n"
+		"vec4 xll_matrixindex_mf4x4_i_2 (mat4 m) { vec4 v; v.x=m[0][2]; v.y=m[1][2]; v.z=m[2][2]; v.w=m[3][2]; return v; }\n")
 		);
 
 	// The GLSL ES implementation on NaCl does not support dynamic indexing
