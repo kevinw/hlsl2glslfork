@@ -268,7 +268,7 @@ DLLEXPORT bool TranslateShader (EShLanguage shaderType,
     ShHandle parser = Hlsl2Glsl_ConstructCompiler (shaderType);
     
     IncludeContext includeCtx;
-    includeCtx.currentFolder = std::string(includePath);
+    includeCtx.currentFolder = std::string(includePath ? includePath : "");
     includeCtx.shaderType = shaderType;
 
     Hlsl2Glsl_ParseCallbacks includeCB;
