@@ -410,7 +410,7 @@ void TGlslOutputTraverser::traverseArrayDeclarationWithInit(TIntermDeclaration* 
 			current->setActiveOutput(out);
 		}
 		
-		unsigned n_vals = init.size();
+		size_t n_vals = init.size();
 		for (unsigned i = 0; i != n_vals; ++i) {
 			current->beginStatement();
 			sym->traverse(this);
@@ -754,10 +754,21 @@ bool TGlslOutputTraverser::traverseBinary( bool preVisit, TIntermBinary *node, T
 				 left->getType().buildMangledName(opName);
 				 opName += "_";
 				 right->getType().buildMangledName(opName);
+
+         bool didHack = false;
+         if (right->isScalar()) {
+           int i = right->getAsConstant()->toInt();
+           if (i == 0) { opName += "_0"; didHack = true; }
+           if (i == 1) { opName += "_1"; didHack = true; }
+           if (i == 2) { opName += "_2"; didHack = true; }
+         }
+
 				 out << opName << " (";
 				 left->traverse(goit);
-				 out << ", ";
-				 right->traverse(goit);
+         if (!didHack) {
+           out << ", ";
+           right->traverse(goit);
+         }
 				 out << ")";
 				 return false;
 			 }
@@ -821,10 +832,21 @@ bool TGlslOutputTraverser::traverseBinary( bool preVisit, TIntermBinary *node, T
 			  left->getType().buildMangledName(opName);
 			  opName += "_";
 			  right->getType().buildMangledName(opName);
+
+         bool didHack = false;
+         if (right->isScalar()) {
+           int i = right->getAsConstant()->toInt();
+           if (i == 0) { opName += "_0"; didHack = true; }
+           if (i == 1) { opName += "_1"; didHack = true; }
+           if (i == 2) { opName += "_2"; didHack = true; }
+         }
+
 			  out << opName << " (";
 			  left->traverse(goit);
-			  out << ", ";
-			  right->traverse(goit);
+        if (!didHack) {
+          out << ", ";
+          right->traverse(goit);
+        }
 			  out << ")";
 			  return false;
 		  }

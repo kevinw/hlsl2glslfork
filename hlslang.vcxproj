@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,27 +21,33 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3B146CC5-B2B8-4573-9D46-6139E2EDFEA3}</ProjectGuid>
     <RootNamespace>hlslang</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>hlsl2glsl</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -252,82 +258,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="hlslang\MachineIndependent\hlslang.l">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Executing flex on %(FullPath)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)..\..\tools\flex.exe %(FullPath)
-if EXIST %(RootDir)%(Directory)gen_hlslang.cpp del %(RootDir)%(Directory)gen_hlslang.cpp
-move gen_hlslang.cpp %(RootDir)%(Directory)gen_hlslang.cpp
-cd %(RootDir)%(Directory)
-rename gen_hlslang.cpp Gen_hlslang.cpp
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hlslang_tab.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)Gen_hlslang.cpp;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Executing flex on %(FullPath)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RootDir)%(Directory)..\..\tools\flex.exe %(FullPath)
-if EXIST %(RootDir)%(Directory)gen_hlslang.cpp del %(RootDir)%(Directory)gen_hlslang.cpp
-move gen_hlslang.cpp %(RootDir)%(Directory)gen_hlslang.cpp
-cd %(RootDir)%(Directory)
-rename gen_hlslang.cpp Gen_hlslang.cpp
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">hlslang_tab.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RootDir)%(Directory)Gen_hlslang.cpp;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Executing flex on %(FullPath)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)..\..\tools\flex.exe %(FullPath)
-if EXIST %(RootDir)%(Directory)gen_hlslang.cpp del %(RootDir)%(Directory)gen_hlslang.cpp
-move gen_hlslang.cpp %(RootDir)%(Directory)gen_hlslang.cpp
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hlslang_tab.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)Gen_hlslang.cpp;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Executing flex on %(FullPath)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RootDir)%(Directory)..\..\tools\flex.exe %(FullPath)
-if EXIST %(RootDir)%(Directory)gen_hlslang.cpp del %(RootDir)%(Directory)gen_hlslang.cpp
-move gen_hlslang.cpp %(RootDir)%(Directory)gen_hlslang.cpp
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">hlslang_tab.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RootDir)%(Directory)Gen_hlslang.cpp;%(Outputs)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="hlslang\MachineIndependent\hlslang.y">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Executing Bison on %(FullPath)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd %(RootDir)%(Directory)
-set PATH=%PATH%;"%(RootDir)%(Directory)..\..\tools\bin\"
-%(RootDir)%(Directory)..\..\tools\bin\bison.exe -d -t -v %(Filename).y
-del /s /q %(RootDir)%(Directory)Gen_%(Filename)_tab.cpp
-del /s /q %(RootDir)%(Directory)%(Filename)_tab.h
-rename %(RootDir)%(Directory)%(Filename).tab.c Gen_%(Filename)_tab.cpp
-rename %(RootDir)%(Directory)%(Filename).tab.h %(Filename)_tab.h
-</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)Gen_%(Filename)_tab.cpp;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Executing Bison on %(FullPath)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SET BISON_SIMPLE=%(RootDir)%(Directory)..\..\tools\bison.simple
-SET BISON_HAIRY=%(RootDir)%(Directory)..\..\tools\bison.simple
-cd %(RootDir)%(Directory)
-%(RootDir)%(Directory)..\..\tools\bison.exe -d -t -v %(Filename).y
-if EXIST %(RootDir)%(Directory)Gen_%(Filename)_tab.cpp del %(RootDir)%(Directory)Gen_%(Filename)_tab.cpp
-rename %(RootDir)%(Directory)%(Filename)_tab.c Gen_%(Filename)_tab.cpp
-</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RootDir)%(Directory)Gen_%(Filename)_tab.cpp;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Executing Bison on %(FullPath)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd %(RootDir)%(Directory)
-set PATH=%PATH%;"%(RootDir)%(Directory)..\..\tools\bin\"
-%(RootDir)%(Directory)..\..\tools\bin\bison.exe -d -t -v %(Filename).y
-del /s /q %(RootDir)%(Directory)Gen_%(Filename)_tab.cpp
-del /s /q %(RootDir)%(Directory)%(Filename)_tab.h
-rename %(RootDir)%(Directory)%(Filename).tab.c Gen_%(Filename)_tab.cpp
-rename %(RootDir)%(Directory)%(Filename).tab.h %(Filename)_tab.h
-</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)Gen_%(Filename)_tab.cpp;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Executing Bison on %(FullPath)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SET BISON_SIMPLE=%(RootDir)%(Directory)..\..\tools\bison.simple
-SET BISON_HAIRY=%(RootDir)%(Directory)..\..\tools\bison.simple
-cd %(RootDir)%(Directory)
-%(RootDir)%(Directory)..\..\tools\bison.exe -d -t -v %(Filename).y
-if EXIST %(RootDir)%(Directory)Gen_%(Filename)_tab.cpp del %(RootDir)%(Directory)Gen_%(Filename)_tab.cpp
-rename %(RootDir)%(Directory)%(Filename)_tab.c Gen_%(Filename)_tab.cpp
-</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RootDir)%(Directory)Gen_%(Filename)_tab.cpp;%(Outputs)</Outputs>
-    </CustomBuild>
+    <ClCompile Include="hlslang\simple_api.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hlslang\MachineIndependent\Initialize.h" />

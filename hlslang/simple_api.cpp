@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include <string>
-#include <sstream>
 #include <vector>
 #include <fstream>
 #include <time.h>
@@ -77,7 +76,14 @@ static void logf(const char* format, ...)
 #include <GL/glut.h>
 
 #endif
+
+#if defined(__APPLE__)
+#include "hlsl2glsl.h"
+#define DLLEXPORT
+#else
 #include "../../include/hlsl2glsl.h"
+#define DLLEXPORT __declspec(dllexport)
+#endif
 static void replace_string (std::string& target, const std::string& search, const std::string& replace, size_t startPos);
 
 typedef std::vector<std::string> StringVector;
@@ -150,27 +156,31 @@ enum TestRun {
 
 static std::string GetCompiledShaderText(ShHandle parser)
 {
-	std::stringstream ss;
-	ss << Hlsl2Glsl_GetShader (parser);
+	std::string txt = Hlsl2Glsl_GetShader (parser);
 	
 	int count = Hlsl2Glsl_GetUniformCount (parser);
     
-    if (count > 0) {
+    if (count > 0)
+	{
 		const ShUniformInfo* uni = Hlsl2Glsl_GetUniformInfo(parser);
-		ss << "\n// uniforms:\n";
-		for (int i = 0; i < count; ++i) {
+		txt += "\n// uniforms:\n";
+		for (int i = 0; i < count; ++i)
+		{
 			char buf[1000];
 			snprintf(buf,1000,"// %s:%s type %d arrsize %d", uni[i].name, uni[i].semantic?uni[i].semantic:"<none>", uni[i].type, uni[i].arraySize);
-			ss << buf;
+			txt += buf;
 
 			if (uni[i].registerSpec)
-				ss << " register " << uni[i].registerSpec;
+			{
+				txt += " register ";
+				txt += uni[i].registerSpec;
+			}
 
-			ss << "\n";
+			txt += "\n";
 		}
 	}
 	
-	return ss.str();
+	return txt;
 }
 
 
@@ -201,12 +211,11 @@ static bool C_DECL IncludeOpenCallback(bool isSystem, const char* fname, const c
 static bool didInitialize = false;
 extern "C" {
 
-void SetIncludeCallback(IncludeCallback includeCallback) {
+DLLEXPORT void SetIncludeCallback(IncludeCallback includeCallback) {
   customIncludeCallback = includeCallback;
 }
 
-__declspec(dllexport)
-bool Parse(EShLanguage shaderType,
+DLLEXPORT bool Parse(EShLanguage shaderType,
 	const char* sourceStr,
 	const char* includePath,
 	ETargetVersion version,
@@ -240,8 +249,7 @@ bool Parse(EShLanguage shaderType,
 	return parseOk;
 }
 
-__declspec(dllexport)
-bool TranslateShader (EShLanguage shaderType,
+DLLEXPORT bool TranslateShader (EShLanguage shaderType,
                       const char* sourceStr,
                       const char* includePath,
                       const char* entryPoint,
@@ -260,7 +268,7 @@ bool TranslateShader (EShLanguage shaderType,
     ShHandle parser = Hlsl2Glsl_ConstructCompiler (shaderType);
     
     IncludeContext includeCtx;
-    includeCtx.currentFolder = std::string(includePath);
+    includeCtx.currentFolder = std::string(includePath ? includePath : "");
     includeCtx.shaderType = shaderType;
 
     Hlsl2Glsl_ParseCallbacks includeCB;
