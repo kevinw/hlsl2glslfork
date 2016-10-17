@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <fstream>
 #include <time.h>
@@ -149,31 +150,27 @@ enum TestRun {
 
 static std::string GetCompiledShaderText(ShHandle parser)
 {
-	std::string txt = Hlsl2Glsl_GetShader (parser);
+	std::stringstream ss;
+	ss << Hlsl2Glsl_GetShader (parser);
 	
 	int count = Hlsl2Glsl_GetUniformCount (parser);
     
-    if (count > 0)
-	{
+    if (count > 0) {
 		const ShUniformInfo* uni = Hlsl2Glsl_GetUniformInfo(parser);
-		txt += "\n// uniforms:\n";
-		for (int i = 0; i < count; ++i)
-		{
+		ss << "\n// uniforms:\n";
+		for (int i = 0; i < count; ++i) {
 			char buf[1000];
 			snprintf(buf,1000,"// %s:%s type %d arrsize %d", uni[i].name, uni[i].semantic?uni[i].semantic:"<none>", uni[i].type, uni[i].arraySize);
-			txt += buf;
+			ss << buf;
 
 			if (uni[i].registerSpec)
-			{
-				txt += " register ";
-				txt += uni[i].registerSpec;
-			}
+				ss << " register " << uni[i].registerSpec;
 
-			txt += "\n";
+			ss << "\n";
 		}
 	}
 	
-	return txt;
+	return ss.str();
 }
 
 
